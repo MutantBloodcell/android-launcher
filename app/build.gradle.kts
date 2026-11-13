@@ -15,7 +15,7 @@ plugins {
     id("org.jetbrains.kotlin.plugin.compose")
 }
 
-val currentGeodeVersion = "5.11.2"
+val currentGeodeVersion = "1.0.0"
 
 abstract class DownloadVersionMetadataTask : DefaultTask() {
     @get:Input
@@ -104,7 +104,7 @@ abstract class DownloadAndUnzipGeodeTask : DownloadGeodeFileTask() {
         val downloadPlatform = platform.get()
         val destinationFile = targetFile.get().asFile
 
-        val tempOutput = this.downloadZip("https://github.com/geode-sdk/geode/releases/download/v$downloadGeodeVersion/geode-v$downloadGeodeVersion-$downloadPlatform.zip")
+        val tempOutput = this.downloadZip("https://github.com/MutantBloodcell/Bloodify/releases/download/v$downloadGeodeVersion/geode-v$downloadGeodeVersion-$downloadPlatform.zip")
 
         val expectedFile = "Geode.$downloadPlatform.so"
 
@@ -121,7 +121,7 @@ abstract class DownloadAndUnzipGeodeTask : DownloadGeodeFileTask() {
                 entry = zip.nextEntry
             }
 
-            throw GradleException("Could not find Geode release.")
+            throw GradleException("Could not find Bloodify release.")
         }
     }
 }
@@ -141,7 +141,7 @@ abstract class DownloadAndUnzipGeodeResourcesTask : DownloadGeodeFileTask() {
     fun execute() {
         val downloadGeodeVersion = geodeVersion.get()
 
-        val tempOutput = this.downloadZip("https://github.com/geode-sdk/geode/releases/download/v$downloadGeodeVersion/resources.zip")
+        val tempOutput = this.downloadZip("https://github.com/MutantBloodcell/Bloodify/releases/download/v$downloadGeodeVersion/resources.zip")
 
         val baseOutput = outputDir.get().asFile
         if (baseOutput.exists()) baseOutput.deleteRecursively()
@@ -176,7 +176,7 @@ abstract class DownloadAndUnzipGeodeResourcesTask : DownloadGeodeFileTask() {
 }
 
 val fetchGeodeMetadataTask = tasks.register<DownloadVersionMetadataTask>("fetchGeodeMetadata") {
-    description = "Fetches and saves a Geode version's metadata"
+    description = "Fetches and saves a Bloodify version's metadata"
     inputs.property("geodeVersion", currentGeodeVersion)
 
     geodeVersion = currentGeodeVersion
@@ -184,7 +184,7 @@ val fetchGeodeMetadataTask = tasks.register<DownloadVersionMetadataTask>("fetchG
 }
 
 val downloadGeode32Task = tasks.register<DownloadAndUnzipGeodeTask>("downloadGeode32Binary") {
-    description = "Downloads the 32bit Geode release archive"
+    description = "Downloads the 32bit Bloodify release archive"
     inputs.property("geodeVersion", currentGeodeVersion)
 
     geodeVersion = currentGeodeVersion
@@ -194,7 +194,7 @@ val downloadGeode32Task = tasks.register<DownloadAndUnzipGeodeTask>("downloadGeo
 }
 
 val downloadGeode64Task = tasks.register<DownloadAndUnzipGeodeTask>("downloadGeode64Binary") {
-    description = "Downloads the 64bit Geode release archive"
+    description = "Downloads the 64bit Bloodify release archive"
     inputs.property("geodeVersion", currentGeodeVersion)
 
     geodeVersion = currentGeodeVersion
@@ -204,7 +204,7 @@ val downloadGeode64Task = tasks.register<DownloadAndUnzipGeodeTask>("downloadGeo
 }
 
 val downloadGeodeResourcesTask = tasks.register<DownloadAndUnzipGeodeResourcesTask>("downloadGeodeResources") {
-    description = "Downloads Geode resources"
+    description = "Downloads Bloodify resources"
     inputs.property("geodeVersion", currentGeodeVersion)
 
     geodeVersion = currentGeodeVersion
@@ -234,7 +234,7 @@ abstract class MergeGeodeFilesTask : DefaultTask() {
 }
 
 val fullDownloadTask = tasks.register<MergeGeodeFilesTask>("downloadGeodeFull") {
-    description = "Downloads both Geode releases"
+    description = "Downloads both Bloodify releases"
 
     binary32 = downloadGeode32Task.flatMap { it.targetFile }
     binary64 = downloadGeode64Task.flatMap { it.targetFile }
@@ -245,11 +245,11 @@ android {
     compileSdk = 37
 
     defaultConfig {
-        applicationId = "com.geode.launcher"
+        applicationId = "com.bloodify.launcher"
         minSdk = 23
         targetSdk = 37
         versionCode = 31
-        versionName = "1.9.0"
+        versionName = "1.0.0"
 
         vectorDrawables {
             useSupportLibrary = true
@@ -291,7 +291,7 @@ android {
         create("googlePlay") {
             dimension = "distribution"
             applicationId = "com.geode.launcher.play"
-            buildConfigField("boolean", "GOOGLE_PLAY_BUILD", "true")
+            buildConfigField("boolean", "GOOGLE_PLAY_BUILD", "false")
             buildConfigField("String", "PREBUNDLED_GEODE", "\"$currentGeodeVersion\"")
         }
     }
