@@ -80,7 +80,7 @@ suspend fun getAccountBackupUrl(backupClient: OkHttpClient, details: UserDetails
             .build()
 
         val request = Request.Builder()
-            .url("https://www.boomlings.com/database/getAccountURL.php")
+            .url("https://bl00dgdps.alwaysdata.net/getAccountURL.php")
             .addHeader("User-Agent", "")
             .post(body)
             .build()
@@ -138,7 +138,7 @@ fun generateBackupRequest(details: UserDetails, url: HttpUrl, gameManager: File,
 
     // gameVersion=22&binaryVersion=%i&dvs=2&udid=%s&uuid=%i&accountID=%i&gjp2=%s&secret=Wmfv3899gc9&saveData=%s
     val body = FormBody.Builder()
-        .add("gameVersion", "22")
+        .add("gameVersion", "1010")
         .add("binaryVersion", details.binaryVersion.toString())
         .add("dvs", "2")
         .add("udid", details.udid)
