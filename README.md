@@ -1,6 +1,6 @@
-# Geode Android Launcher
+# Bloodify Android Launcher
 
-Launches a vanilla copy of Geometry Dash with the Geode loader added.
+Launches a vanilla copy of BloodGDPS with the Bloodify loader added.
 
 ## Shortcut Links
 
