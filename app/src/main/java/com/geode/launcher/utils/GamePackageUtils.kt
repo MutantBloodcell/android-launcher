@@ -48,13 +48,6 @@ object GamePackageUtils {
     }
 
     private val gameVersionMap = mapOf(
-        37L to "2.200",
-        38L to "2.205",
-        39L to "2.206",
-        40L to "2.2074", // ok
-        41L to "2.2081",
-        42L to "2.209",
-        43L to "2.2091",
         101L to "1.0.101"
     )
 
