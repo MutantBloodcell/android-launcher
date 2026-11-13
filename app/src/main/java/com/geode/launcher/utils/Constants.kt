@@ -14,10 +14,10 @@ object Constants {
     const val GJ_DATA_DIR = "/data/data/${PACKAGE_NAME}"
 
     // anything below this version code is blocked from opening the game
-    const val SUPPORTED_VERSION_CODE_MIN = 101L
+    const val SUPPORTED_VERSION_CODE_MIN = 41L
 
     // anything below this version code shows a warning on the main menu
-    const val SUPPORTED_VERSION_CODE_MIN_WARNING = 101L
+    const val SUPPORTED_VERSION_CODE_MIN_WARNING = 41L
 
     // anything above this version code will show a warning when starting the game
     const val SUPPORTED_VERSION_CODE = 101L
