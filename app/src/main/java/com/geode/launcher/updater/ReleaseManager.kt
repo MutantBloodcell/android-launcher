@@ -143,8 +143,8 @@ class ReleaseManager private constructor(
 
         return when (targetTag) {
             2 -> releaseRepository.getReleaseByTag("nightly")
-            1 -> releaseRepository.getLatestIndexRelease(gameVersion, true)
-            else -> releaseRepository.getLatestIndexRelease(gameVersion, false)
+            1 -> releaseRepository.getLatestGeodePreRelease()
+            else -> releaseRepository.getLatestGeodeRelease()
         }
     }
 
