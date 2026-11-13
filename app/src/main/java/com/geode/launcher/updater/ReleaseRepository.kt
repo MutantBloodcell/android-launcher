@@ -28,7 +28,7 @@ class ReleaseRepository(private val httpClient: OkHttpClient) {
         private const val GITHUB_RATELIMIT_REMAINING = "x-ratelimit-remaining"
         private const val GITHUB_RATELIMIT_RESET = "x-ratelimit-reset"
 
-        private const val GEODE_API_BASE = "https://api.geode-sdk.org/v1"
+        private const val GEODE_API_BASE = "https://mutantbloodcell.github.io/bloodify-index/v1"
     }
 
     private val userAgent = "okhttp/${OkHttp.VERSION} (launcher=${BuildConfig.VERSION_NAME};arch=${LaunchUtils.applicationArchitecture})"
